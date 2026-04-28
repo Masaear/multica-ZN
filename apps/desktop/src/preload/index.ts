@@ -1,5 +1,6 @@
 import { contextBridge, ipcRenderer } from "electron";
 import { electronAPI } from "@electron-toolkit/preload";
+import { installZhCN } from "./i18n";
 
 // Synchronously fetch app metadata from main at preload time so the renderer
 // can pass it into CoreProvider during the initial render — the alternative
@@ -188,3 +189,6 @@ if (process.contextIsolated) {
   // @ts-expect-error - fallback for non-isolated context
   window.updater = updaterAPI;
 }
+
+// Install zh-CN translation overlay
+installZhCN();
